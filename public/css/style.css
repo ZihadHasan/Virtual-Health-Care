@@ -1,0 +1,39 @@
+.ehealth{
+  color: white !important;
+  background-color: #449c9c !important;
+  border-color: #449c9c !important;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+.ehealth a{
+  color: white !important;
+  background-color: #449c9c !important;
+  text-decoration: none;
+}
+
+.ehealth a:hover{
+  color: white !important;
+  background-color: #449c9c !important;
+}
+
+.ehealth a:active{
+  color: white !important;
+  background-color: #449c9c !important;
+}
+
+.ehealth li a:hover{
+  color: white !important;
+  background-color: #449c9c !important;
+}
+
+.ehealth li a:active{
+  color: white !important;
+  background-color: #449c9c !important;
+}
+
+a:hover, a:active {
+    text-decoration: none !important;
+}
