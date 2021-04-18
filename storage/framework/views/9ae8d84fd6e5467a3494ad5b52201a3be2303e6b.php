@@ -10,24 +10,24 @@
 	<title>Digital Healthcare</title>
 
 	<!-- Favicons-->
-	<link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
-	<link rel="apple-touch-icon" type="image/x-icon" href="{{asset('img/apple-touch-icon-57x57-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{asset('img/apple-touch-icon-72x72-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{asset('img/apple-touch-icon-114x114-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{asset('img/apple-touch-icon-144x144-precomposed.png')}}">
+	<link rel="shortcut icon" href="<?php echo e(asset('img/favicon.ico')); ?>" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="<?php echo e(asset('img/apple-touch-icon-57x57-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="<?php echo e(asset('img/apple-touch-icon-72x72-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="<?php echo e(asset('img/apple-touch-icon-114x114-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="<?php echo e(asset('img/apple-touch-icon-144x144-precomposed.png')); ?>">
 
 	<!-- BASE CSS -->
-	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
-	<link href="{{asset('css/style-front.css')}}" rel="stylesheet">
-	<link href="{{asset('css/menu.css')}}" rel="stylesheet">
-	<link href="{{asset('css/vendors.css')}}" rel="stylesheet">
-	<link rel="stylesheet" href="{{asset('css/app.css')}}">
-  	<link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
-	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('css/font-awesome.min.css')); ?>">
+	
+	<link href="<?php echo e(asset('css/style-front.css')); ?>" rel="stylesheet">
+	<link href="<?php echo e(asset('css/menu.css')); ?>" rel="stylesheet">
+	<link href="<?php echo e(asset('css/vendors.css')); ?>" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+  	<link rel="stylesheet" href="<?php echo e(asset('css/toastr.min.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
 
 	<!-- YOUR CUSTOM CSS -->
-	<link href="{{asset('css/custom.css')}}" rel="stylesheet">
+	<link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet">
 
 
 </head>
@@ -60,35 +60,36 @@
       	</div>
 
       <ul class="nav navbar-nav navbar-right">
-		@if(!Auth::user())
+		<?php if(!Auth::user()): ?>
 		<li>
 			<a class="btn btn-success" href="/login"><i class="fa fa-power-off"></i> Login</a>
 		</li>
 		<li>
 			<a class="btn btn-primary" href="/register"><i class="fa fa-user-plus"></i> Register</a>
 		</li>
-		@else
+		<?php else: ?>
 		<li>
-			<a class="btn btn-info" href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+			<a class="btn btn-info" href="<?php echo e(route('home')); ?>"><i class="fa fa-home"></i> Home</a>
 		</li>
 		<li>
-			<a class="btn btn-danger" href="{{ url('/logout') }}"
+			<a class="btn btn-danger" href="<?php echo e(url('/logout')); ?>"
 			onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();">
 			<i class="fa fa-power-off"></i> Logout
 			</a>
 
-			<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-			{{ csrf_field() }}
+			<form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" style="display: none;">
+			<?php echo e(csrf_field()); ?>
+
 			</form>
 		</li>
-		@endif
+		<?php endif; ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 	<main>
-		@yield('content')
+		<?php echo $__env->yieldContent('content'); ?>
 	</main>
 	<!-- /main content -->
 	<footer>
@@ -101,10 +102,10 @@
 	<!-- Back to top button -->
 
 	<!-- COMMON SCRIPTS -->
-	<script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
-	<script src="{{asset('js/common_scripts.min.js')}}"></script>
-	<script src="{{asset('js/functions.js')}}"></script>
-	<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+	<script src="<?php echo e(asset('js/jquery-2.2.4.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/common_scripts.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/functions.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/owl.carousel.min.js')); ?>"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 		$(".owl-carousel").owlCarousel();

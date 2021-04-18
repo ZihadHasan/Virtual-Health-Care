@@ -11,24 +11,24 @@
 	<title>Digital Healthcare</title>
 
 	<!-- Favicons-->
-	<link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
-	<link rel="apple-touch-icon" type="image/x-icon" href="{{asset('img/apple-touch-icon-57x57-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{asset('img/apple-touch-icon-72x72-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{asset('img/apple-touch-icon-114x114-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{asset('img/apple-touch-icon-144x144-precomposed.png')}}">
+	<link rel="shortcut icon" href="<?php echo e(asset('img/favicon.ico')); ?>" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="<?php echo e(asset('img/apple-touch-icon-57x57-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="<?php echo e(asset('img/apple-touch-icon-72x72-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="<?php echo e(asset('img/apple-touch-icon-114x114-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="<?php echo e(asset('img/apple-touch-icon-144x144-precomposed.png')); ?>">
 
 	<!-- BASE CSS -->
-	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
-	<link href="{{asset('css/style-front.css')}}" rel="stylesheet">
-	<link href="{{asset('css/menu.css')}}" rel="stylesheet">
-	<link href="{{asset('css/vendors.css')}}" rel="stylesheet">
-	<link rel="stylesheet" href="{{asset('css/app.css')}}">
-  	<link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
-	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('css/font-awesome.min.css')); ?>">
+	
+	<link href="<?php echo e(asset('css/style-front.css')); ?>" rel="stylesheet">
+	<link href="<?php echo e(asset('css/menu.css')); ?>" rel="stylesheet">
+	<link href="<?php echo e(asset('css/vendors.css')); ?>" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+  	<link rel="stylesheet" href="<?php echo e(asset('css/toastr.min.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
 
 	<!-- YOUR CUSTOM CSS -->
-	<link href="{{asset('css/custom.css')}}" rel="stylesheet">
+	<link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet">
 
 </head>
 
@@ -60,29 +60,30 @@
       	</div>
 
       <ul class="nav navbar-nav navbar-right">
-		@if(!Auth::user())
+		<?php if(!Auth::user()): ?>
 		<li>
 			<a class="btn btn-success" href="/login"><i class="fa fa-power-off"></i> Login</a>
 		</li>
 		<li>
 			<a class="btn btn-primary" href="/register"><i class="fa fa-user-plus"></i> Register</a>
 		</li>
-		@else
+		<?php else: ?>
 		<li>
-			<a class="btn btn-info" href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+			<a class="btn btn-info" href="<?php echo e(route('home')); ?>"><i class="fa fa-home"></i> Home</a>
 		</li>
 		<li>
-			<a class="btn btn-danger" href="{{ url('/logout') }}"
+			<a class="btn btn-danger" href="<?php echo e(url('/logout')); ?>"
 			onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();">
 			<i class="fa fa-power-off"></i> Logout
 			</a>
 
-			<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-			{{ csrf_field() }}
+			<form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" style="display: none;">
+			<?php echo e(csrf_field()); ?>
+
 			</form>
 		</li>
-		@endif
+		<?php endif; ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -127,7 +128,7 @@
 				</div>
 			</div>
 			<!-- /row -->
-			<p class="text-center"><a style="font-size: 3rem;" href="{{route('list')}}" class="btn_1 medium">Find Doctor</a></p>
+			<p class="text-center"><a style="font-size: 3rem;" href="<?php echo e(route('list')); ?>" class="btn_1 medium">Find Doctor</a></p>
 
 		</div>
 		<!-- /container -->
@@ -141,20 +142,20 @@
 					
             	
 				<div class="row">
-					@foreach ($doctors as $doctor)
+					<?php $__currentLoopData = $doctors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doctor): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 		              <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
 		                <div class="panel panel-primary text-center">
-		                  <div class="panel-heading"><strong>{{$doctor->user->name}}</strong></div>
+		                  <div class="panel-heading"><strong><?php echo e($doctor->user->name); ?></strong></div>
 		                  <div class="panel-body">
-		                    <img src="{{asset($doctor->user->avatar)}}" alt="{{$doctor->user->name}}" class="img-fluid" height="200px" width="200px"><br><br>
-		                    <b>{{$doctor->title}}</b><br>
-		                    {{$doctor->department->name}}<br>
-		                    <span class="alert-danger" style="padding: 2px; margin-bottom: 5px">{{$doctor->user->description}}</span><br>
-		                    <a href="{{route('profile',['id' => $doctor->id])}}" class="btn btn-sm btn-primary"><strong>View Profile</strong></a>
+		                    <img src="<?php echo e(asset($doctor->user->avatar)); ?>" alt="<?php echo e($doctor->user->name); ?>" class="img-fluid" height="200px" width="200px"><br><br>
+		                    <b><?php echo e($doctor->title); ?></b><br>
+		                    <?php echo e($doctor->department->name); ?><br>
+		                    <span class="alert-danger" style="padding: 2px; margin-bottom: 5px"><?php echo e($doctor->user->description); ?></span><br>
+		                    <a href="<?php echo e(route('profile',['id' => $doctor->id])); ?>" class="btn btn-sm btn-primary"><strong>View Profile</strong></a>
 		                  </div>
 		                </div>
 		              </div>
-	              @endforeach
+	              <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 	            </div>
           
 			</div>
@@ -175,11 +176,11 @@
 							<strong>Search by Department</storng>
 						</div>
 						<ul>
-							@if($departments->count() > 0)
-								@foreach($departments as $dep)
-									<li><a href="{{route('department.doctor',['id' => $dep->id])}}"><strong>{{$i++}}</strong>{{$dep->name}}</a></li>
-								@endforeach
-							@endif
+							<?php if($departments->count() > 0): ?>
+								<?php $__currentLoopData = $departments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dep): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+									<li><a href="<?php echo e(route('department.doctor',['id' => $dep->id])); ?>"><strong><?php echo e($i++); ?></strong><?php echo e($dep->name); ?></a></li>
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+							<?php endif; ?>
 						</ul>
 					</div>
 				</div>
@@ -203,10 +204,10 @@
 	<!-- Back to top button -->
 
 	<!-- COMMON SCRIPTS -->
-	<script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
-	<script src="{{asset('js/common_scripts.min.js')}}"></script>
-	<script src="{{asset('js/functions.js')}}"></script>
-	<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+	<script src="<?php echo e(asset('js/jquery-2.2.4.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/common_scripts.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/functions.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/owl.carousel.min.js')); ?>"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 		$(".owl-carousel").owlCarousel();

@@ -10,24 +10,24 @@
 	<title>Digital Healthcare</title>
 
 	<!-- Favicons-->
-	<link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
-	<link rel="apple-touch-icon" type="image/x-icon" href="{{asset('img/apple-touch-icon-57x57-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{asset('img/apple-touch-icon-72x72-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{asset('img/apple-touch-icon-114x114-precomposed.png')}}">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{asset('img/apple-touch-icon-144x144-precomposed.png')}}">
+	<link rel="shortcut icon" href="<?php echo e(asset('img/favicon.ico')); ?>" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="<?php echo e(asset('img/apple-touch-icon-57x57-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="<?php echo e(asset('img/apple-touch-icon-72x72-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="<?php echo e(asset('img/apple-touch-icon-114x114-precomposed.png')); ?>">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="<?php echo e(asset('img/apple-touch-icon-144x144-precomposed.png')); ?>">
 
 	<!-- BASE CSS -->
-	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
-	<link href="{{asset('css/style-front.css')}}" rel="stylesheet">
-	<link href="{{asset('css/menu.css')}}" rel="stylesheet">
-	<link href="{{asset('css/vendors.css')}}" rel="stylesheet">
-	<link rel="stylesheet" href="{{asset('css/app.css')}}">
-  	<link rel="stylesheet" href="{{asset('css/toastr.min.css')}}">
-	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+	<link rel="stylesheet" href="<?php echo e(asset('css/font-awesome.min.css')); ?>">
+	
+	<link href="<?php echo e(asset('css/style-front.css')); ?>" rel="stylesheet">
+	<link href="<?php echo e(asset('css/menu.css')); ?>" rel="stylesheet">
+	<link href="<?php echo e(asset('css/vendors.css')); ?>" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+  	<link rel="stylesheet" href="<?php echo e(asset('css/toastr.min.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
 
 	<!-- YOUR CUSTOM CSS -->
-	<link href="{{asset('css/custom.css')}}" rel="stylesheet">
+	<link href="<?php echo e(asset('css/custom.css')); ?>" rel="stylesheet">
 
 </head>
 
@@ -59,29 +59,30 @@
       	</div>
 
       <ul class="nav navbar-nav navbar-right">
-		@if(!Auth::user())
+		<?php if(!Auth::user()): ?>
 		<li>
 			<a class="btn btn-success" href="/login"><i class="fa fa-power-off"></i> Login</a>
 		</li>
 		<li>
 			<a class="btn btn-primary" href="/register"><i class="fa fa-user-plus"></i> Register</a>
 		</li>
-		@else
+		<?php else: ?>
 		<li>
-			<a class="btn btn-info" href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+			<a class="btn btn-info" href="<?php echo e(route('home')); ?>"><i class="fa fa-home"></i> Home</a>
 		</li>
 		<li>
-			<a class="btn btn-danger" href="{{ url('/logout') }}"
+			<a class="btn btn-danger" href="<?php echo e(url('/logout')); ?>"
 			onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();">
 			<i class="fa fa-power-off"></i> Logout
 			</a>
 
-			<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-			{{ csrf_field() }}
+			<form id="logout-form" action="<?php echo e(url('/logout')); ?>" method="POST" style="display: none;">
+			<?php echo e(csrf_field()); ?>
+
 			</form>
 		</li>
-		@endif
+		<?php endif; ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -93,23 +94,24 @@
 				<div id="login">
 					<h1>Please login for Service</h1>
 					<div class="box_form">
-						<form method="POST" action="{{ url('/login') }}">
-							{{ csrf_field() }}
+						<form method="POST" action="<?php echo e(url('/login')); ?>">
+							<?php echo e(csrf_field()); ?>
+
 							<div class="form-group">
 								<input type="email" class="form-control" name="email" placeholder="Your email address">
-								@if ($errors->has('email'))
+								<?php if($errors->has('email')): ?>
 						            <span class="help-block">
-						                <strong>{{ $errors->first('email') }}</strong>
+						                <strong><?php echo e($errors->first('email')); ?></strong>
 						            </span>
-						        @endif
+						        <?php endif; ?>
 							</div>
 							<div class="form-group">
 								<input type="password" name="password" class="form-control" placeholder="Your password">
-								@if ($errors->has('password'))
+								<?php if($errors->has('password')): ?>
 						            <span class="help-block">
-						                <strong>{{ $errors->first('password') }}</strong>
+						                <strong><?php echo e($errors->first('password')); ?></strong>
 						            </span>
-						        @endif
+						        <?php endif; ?>
 							</div>
 							<a href="#0"><small>Forgot password?</small></a>
 							<div class="form-group text-center add_top_20">
@@ -137,9 +139,9 @@
 	<!-- Back to top button -->
 
 	<!-- COMMON SCRIPTS -->
-	<script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
-	<script src="{{asset('js/common_scripts.min.js')}}"></script>
-	<script src="{{asset('js/functions.js')}}"></script>
+	<script src="<?php echo e(asset('js/jquery-2.2.4.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/common_scripts.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('js/functions.js')); ?>"></script>
 
 </body>
 

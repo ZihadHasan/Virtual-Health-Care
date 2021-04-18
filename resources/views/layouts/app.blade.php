@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Find easily a doctor and book online an appointment">
 	<meta name="author" content="INFiNITE">
-	<title>Doctor & Patient</title>
+	<title>Digital Healthcare</title>
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
@@ -53,7 +53,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Doctor & Patient</a>
+      <a class="navbar-brand" href="/">Digital Healthcare</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -123,7 +123,7 @@
 		<div class="container">
 			<div class="row">
 				<div style="color: #212121 !important;" class="col-lg-6 col-lg-offset-3">
-					Made by Team <strong>INFiNITE</strong> for <strong>UAP S&H Expo.</strong> <span style="color:red; font-size: 3rem;">&hearts;</span>
+					Made by <strong>Group5</strong> for <strong>Software Development Project.</strong> <span style="color:red; font-size: 3rem;">&hearts;</span>
 				</div>
 			</div>
 		</div>
